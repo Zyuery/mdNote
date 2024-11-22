@@ -1,0 +1,552 @@
+# Chapter 1 学习目标
+
+1、能够知道**如何创建小程序**
+
+2、小程序的基本组成结构
+
+3、小程序页面的组成部分
+
+4、小程序常见的组件如何使用
+
+5、知道小程序如何进行协同开发和发布
+
+![image-20240204220256697](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204220256697.png)
+
+---
+
+# 学习目录
+
+## 一、小程序简介
+
+### 1、小程序与普通网页的区别
+
+1.1 运行环境不同
+
+1.2API不同
+
+由于运行环境的不同，无法调用DOM和BOM的API。但是小程序中可以调用微信环境提供的API，如：
+
+* 地理定位
+* 扫码
+* 支付
+
+1.3 开发环境不同
+
+网页的开发：浏览器+代码编译器
+
+小程序的开发：
+
+* 申请小程序开发账号
+* 安装开发工具
+* 创建和配置小程序项目
+
+### 2、体验小程序
+
+![image-20240126192458378](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126192458378.png)
+
+## 二、第一个小程序
+
+#### 前言
+
+1、注册小程序开发账号（略）
+
+2、小程序的APPID
+
+![image-20240126193107314](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126193107314.png)
+
+3、开发设置
+
+[小程序 (qq.com)](https://mp.weixin.qq.com/wxamp/devprofile/get_profile?token=663454295&lang=zh_CN)
+
+4、微信开发者工具
+
+![image-20240126194237787](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126194237787.png)
+
+#### 小程序工具介绍
+
+![image-20240126201118341](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126201118341.png)
+
+1、菜单栏
+
+![](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126201211345.png)
+
+ >帮助—开发者文档—帮我们直接定位到API开发者文档
+ >
+ >设置—外观||代理
+ >
+ >工具—构建npm
+
+2、工具栏
+
+![image-20240126201240876](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126201240876.png)
+
+>模拟器||编译器||调试器——控制对应区块的展示与否
+>
+>编译—刷新效果
+>
+>预览—查看效果
+>
+>详情—查看小程序的一些基本信息（API、大小、位置、配置）
+>
+>---
+>
+>模拟器：
+>
+>机型（建议iphone6以上、显示比例150%）
+>
+>左下角页面路径、页面大小、场景值
+>
+>---
+>
+>代码编译器
+>
+>---
+>
+>调试器：
+>
+>console、wxml
+
+3、模拟器
+
+<img src="C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126201259831.png" alt="image-20240126201259831" style="zoom:25%;" />
+
+4、代码编译区
+
+![image-20240126201342139](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126201342139.png)
+
+5、调试区
+
+![image-20240126201415190](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126201415190.png)
+
+## 三、小程序代码构成
+
+### 1、了解项目的基本组成结构
+
+![image-20240126204459519](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126204459519.png)
+
+### 2、小程序的页面组成成分
+
+![image-20240126204851308](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126204851308.png)
+
+![image-20240126205006849](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126205006849.png)
+
+>.js 存放页面逻辑
+>
+>.json存放配置
+>
+>.wxml是ui结构
+>
+>.wxss存放样式表
+
+### 3、json配置文件
+
+3.1 json配置文件的作用
+
+**JSON 是一种数据格式**，在实际开发中，JSON 总是以**配置文件**的形式出现。小程序项目中也不例外: 通过不同的 .json 配置文件，可以对小程序项目进行不同级别的配置。
+
+<img src="C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126205606927.png" alt="image-20240126205606927" style="zoom: 67%;" />
+
+3.2 app.json文件
+
+app.json 是当前小程序的**全局配置**，包括了小程序的**所有页面路径、窗口外观、界面表现、底部 tab** 等，Demo 项目里边的app.json 配置内容如下:
+
+![image-20240126210353924](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126210353924.png)
+
+3.3 project.config.json文件
+
+project.config,json 是项目配置文件，用来记录我们**对小程序开发工具所做的个性化配置**，例如:
+
+* **setting** 中保存了**编译相关的配置**
+* **projectname** 中保存的是**项目名称**
+* **appid** 中保存的是**小程序的账号 ID**
+
+3.4 sitemap.json文件
+
+微信现已开放**小程序内搜索**，效果类似于 PC 网页的 SEO。sitemap.json 文件用来**配置小程序页面是否允许微信索引**。
+当开发者允许微信索引时，微信会通过爬虫的形式，为小程序的页面内容建立索引。当用户的搜索关键字和页面的索引匹配成功的时候，小程序的页面将可能展示在搜索结果中。
+
+![image-20240126211455658](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126211455658.png)
+
+rule数组—索引规则
+
+action—allow 允许被索引(disallow—不允许被索引)
+
+page— *  所以页面都允许被索引
+
+![image-20240126220620228](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126220620228.png)
+
+如果觉得这个黄色警告别扭：
+
+*注意: sitemap 的索引提示是默认开启的，如需要关闭 sitemap 的索引提示，可在小程序项目配置文件*
+**project.configjson** 的 **setting** 中配置字段 **checkSiteMap** 为 **false**
+
+3.5、页面的.json配置文件
+
+![image-20240126221134840](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240126221134840.png)
+
+3.6、新建小程序页面
+
+只需要在 **app.json** -> **pages** 中新增页面的存放路径，小程序开发者工具即可帮我们自动创建对应的页面文件，
+
+如图所示：
+
+![image-20240127120910295](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127120910295.png)
+
+3.7 修改项目首页
+
+只需要调整 **app.json** -> **pages** 数组中页面路径的前后顺序，即可修改项目的首页。小程序会把排在第一位的页面，当作项目首页进行渲染，如图所示:
+
+![image-20240127124837517](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127124837517.png)
+
+### 4、WXML模板
+
+4.1 什么是WXML
+
+WXML (WeiXin Markup Language)是小程序框架设计的一套**标签语言，用来构建小程序页面的结构**，其作用类似于网页开发中的 HTML。
+
+4.2 WXML和HTML的区别
+
+- 标签名称不同
+  * HTML(div, span, img, a)
+  * WXML (view, text,image, navigator)
+
+- 属性节点不同
+
+  *  <a href="#">超链接</a>
+  * <navigator url="/pages/home/home"></navigator>
+  * ![image-20240127125707759](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127125707759.png)
+
+- 提供了类似于Vue中的模板语法
+
+  * 数据绑定
+  * 列表渲染
+  * 条件渲染
+
+### 5、WXSS样式
+
+  5.1 什么是WXSS
+
+WXss(WeiXin Style Sheets)是一套**样式语言**，用于描述 WXML的组件样式，类似于网页开发中的 CSS。
+
+5.2 WXSS 和CSS的区别
+
+* 新增了rpx尺寸单位
+  * CSS中需要手动进行像素单位换算，例如 rem
+  * WXSS在底层支持新的尺寸单位 rpx，在不同大小的屏幕上小程序会自动进行换算
+
+* 提供了全局的样式和局部样式
+  * 项目根目录中的app.wxss 会作用于所有小程序页面
+  * 局部页面的.wxss样式仅对当前页面生效
+
+* WXSS仅支持部分CSS选择器
+  * .class和#id
+  * element
+  * 并集选择器、后代选择器
+  * ::after和::before 等伪类选择器
+
+### 6、JS逻辑交互
+
+6.1 小程序中的 .js 文件
+
+一个项目仅仅提供界面展示是不够的，在小程序中，我们通过 .js文件来处理用户的操作。
+
+例如:响应用户的点击、获取用户的位置等等。
+
+6.2 小程序中.js文件的分类
+
+分为三大类：
+
+* app.js
+  * 是**整个小程序项目的入口文件**，通过调用**APP（）函数**来启动整个小程序
+* 页面的.js文件
+  * 是**页面的入口文件**，通过调用**Page（）函数**来创建并运行页面
+* 普通的.js文件
+  * 是**普通的功能模块文件**，用来封装**公共的函数或属性**供页面使用。
+
+## 四、小程序宿主环境
+
+### 1、什么是宿主环境
+
+**宿主环境** (host environment)指的是程**序运行所必须的依赖环境**。
+
+例如:
+
+**Android 系统**和 **i0S 系统**是两个不同的宿主环境。安卓版的微信 App 是不能在i0S 环境下运行的，所以Android 是安卓软件的宿主环境，**脱离了宿主环境的软件是没有任何意义的!**
+
+![image-20240127132447649](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127132447649.png)
+
+### 2、小程序的宿主环境
+
+**手机微信是小程序的宿主环境**，如图所示：
+
+![image-20240127132643715](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127132643715.png)
+
+小程序**借助宿主环境提供的能力**，可以完成许多普通网页无法完成的功能，例如：微信扫码、微信支付、微信登录、地理定位、etc...
+
+### 3、 小程序宿主环境包含的内容
+
+* 通信模型
+* 运行机制
+* 组件
+* API
+
+#### 3.1通信模型
+
+3.1.1 通信的主体
+
+小程序中通信的主体是**渲染层**和**逻辑层**，其中：
+
+* WXML模板和WXSS样式工作在渲染层
+* JS脚本工作在逻辑层
+
+![image-20240127133230647](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127133230647.png)
+
+3.1.2 小程序的通信模型
+
+小程序中的通信模型分为两部分:
+
+* **渲染层**和**逻辑层**之间的通信
+  * 由微信客户端进行转发
+* **逻辑层**和**第三方服务器**之间的通信
+  * 由微信客户端进行转发
+
+![image-20240127133700461](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127133700461.png)
+
+#### 3.2 运行机制
+
+3.2.1 小程序启动的过程
+
+* 把小程序的代码包下载到本地
+* 解析app.json全局配置文件
+
+* 执行app.js小程序的入口文件，调用**APP（）创建小程序实例**
+* 渲染小程序首页
+* 小程序启动完成
+
+3.2.2 页面的渲染过程
+
+* 加载解析页面的.json配置文件
+* 加载页面的.wxml模板和.wxss样式
+* 执行页面的.js文件，**调用Page()创建页面实例**
+
+* 页面渲染完成
+
+#### 3.3 组件
+
+3.3.1 小程序中组件的分类
+
+**小程序中的组件也是由宿主环境提供的**，开发者可以基于组件快速搭建出漂亮的页面结构。官方把小程序的组
+件分为9大类，分别是
+
+![image-20240127134841134](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127134841134.png)
+
+3.3.2 常用的视图容器类组件
+
+![image-20240127135127336](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127135127336.png)
+
+3.3.3 view组件的基本使用效果
+
+![image-20240127135229272](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127135229272.png)
+
+3.3.4 scroll-view 组件的基本使用
+
+![image-20240127141501328](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127141501328.png)
+
+3.3.5 swiper 和 swiper-item组件的基本使用效果
+
+![image-20240127142839042](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240127142839042.png)
+
+3.3.6  swiper组件的常用属性
+
+![image-20240203220906404](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240203220906404.png)
+
+3.3.7  常用的基础内容组件
+
+![image-20240204142231843](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204142231843.png)
+
+3.3.8 text组件的基本使用
+
+![image-20240204142512425](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204142512425.png)
+
+3.3.9 rich-text组件的基本使用
+
+![image-20240204144050801](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204144050801.png)
+
+3.3.10 其他常用的组件
+
+![image-20240204205753365](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204205753365.png)
+
+3.3.11 button组件的使用
+
+![image-20240204205831040](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204205831040.png)
+
+3.3.12 image组件的基本使用
+
+![image-20240204212651495](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204212651495.png)
+
+3.3.13 image组件里的mode属性
+
+![image-20240204212806894](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204212806894.png)
+
+#### 3.4 API
+
+3.4.1小程序API概述
+
+   **小程序中的 AP1是由宿主环境提供的**，通过这些丰富的小程序 API，开发者可以方便的调用微信提供的能力例如:获取用户信息、本地存储、支付功能等。
+
+3.4.2 小程序API的三大分类
+
+![image-20240204213702571](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204213702571.png)
+
+## 五、协同工作发布
+
+### 1、协同工作
+
+#### 3.1 了解权限管理需求
+
+ ![image-20240204214023645](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214023645.png)
+
+#### 3.2 了解项目成员的组织结构
+
+![image-20240204214053226](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214053226.png)
+
+### 3.3 小程序的开发流程
+
+![image-20240204214139764](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214139764.png)
+
+### 2、小程序的成员管理
+
+#### 2.1 成员管理的两个方面
+
+![image-20240204214516407](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214516407.png)
+
+#### 2.2 不同项目成员对应的权限
+
+![image-20240204214634890](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214634890.png)
+
+#### 2.3 开发者的权限说明
+
+![image-20240204214710477](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214710477.png)
+
+#### 2.4 添加项目成员和体验成员
+
+![image-20240204214754367](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214754367.png)
+
+### 3、小程序的版本
+
+#### 3.1 软件开发过程中的不同版本
+
+![image-20240204214900703](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214900703.png)
+
+#### 3.2 小程序的版本
+
+#### ![image-20240204214927532](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204214927532.png)
+
+### 4、发布上线
+
+#### 4.1 小程序发布上线的整体步骤
+
+   一个小程序的发布上线，一般要经过**上传代码 ->提交审核 ->发布**这三个步骤。
+
+#### 4.2 上传代码
+
+![image-20240204215125388](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204215125388.png)
+
+#### 4.3 在后台查看上传之后的版本
+
+![image-20240204215205271](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204215205271.png)
+
+#### 4.4 提交审核
+
+![image-20240204215720510](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204215720510.png)
+
+#### 4.5  发布
+
+![image-20240204215802291](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204215802291.png)
+
+#### 4.6 基于小程序码进行推广
+
+![image-20240204220203359](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240204220203359.png)
+
+# chapter 2 学习目标
+
+1、能够使用 WXML模板语法渲染页面结构
+2、能够使用 WXSS 样式美化页面结构
+3、能够使用 app.json 对小程序进行全局性配置
+4、能够使用 page.json 对小程序页面进行个性化配置
+5、能够知道如何发起网络数据请求
+
+# 学习目录
+
+## 一、WXML模板语法
+
+### 1、数据绑定
+
+#### 1.1 数据绑定的基本原则
+
+* 在data中定义数据
+* 在WXML中使用数据
+
+#### 1.2 在data中定义页面的数据
+
+![image-20240206160904218](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206160904218.png)
+
+#### 1.3 Mustacge语法的格式
+
+![image-20240206161022244](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206161022244.png)
+
+#### 1.4Mustacge语法的应用场景
+
+![](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206161930228.png)
+
+#### 1.5 动态绑定内容
+
+![image-20240206162032148](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206162032148.png)
+
+#### 1.6 动态绑定属性
+
+![image-20240206162444453](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206162444453.png)
+
+#### 1.7 三元运算
+
+![image-20240206163210814](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206163210814.png)
+
+![image-20240206163228603](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206163228603.png)
+
+#### 1.8 算数运算
+
+![image-20240206164247717](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206164247717.png)
+
+![image-20240206164304082](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206164304082.png)
+
+### 2、事件绑定
+
+#### 2.1 什么是事件
+
+![image-20240206164441237](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206164441237.png)
+
+#### 2.2 小程序中常用的事件
+
+![image-20240206174013802](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206174013802.png)
+
+#### 2.3 事件对象的属性列表
+
+![image-20240206174311963](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206174311963.png)
+
+#### 2.4 target和currenttarget的区别
+
+![image-20240206174734148](C:\Users\zengyue\AppData\Roaming\Typora\typora-user-images\image-20240206174734148.png)
+
+#### 2.5 bindtap的语法格式
+
+
+
+## 二、WXSS模板样式
+
+## 三、全局配置
+
+## 四、页面配置
+
+## 五、网络数据请求
+
+## 六、案例-本地生活（首页）
